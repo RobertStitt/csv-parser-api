@@ -66,6 +66,13 @@ app.use((req, res) => {
   res.status(404).json({ error: "Endpoint not found" });
 });
 
+app.use(
+  cors({
+    origin: "https://fuel-data-app.onrender.com",
+  })
+);
+app.options("*", cors());
+
 // Start server
 initializeData().finally(() => {
   app.listen(PORT, () => {
