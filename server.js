@@ -4,7 +4,7 @@ const fs = require("fs");
 const app = express();
 const csv = require("csv-parser");
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT;
 const router = express.Router();
 
 app.use(express.json());
