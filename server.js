@@ -11,6 +11,8 @@ const router = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cors());
+
 let csvData = [];
 
 const parseCsvFile = (filename = "auto-mpg.csv") => {
@@ -66,13 +68,6 @@ app.use("/api", router);
 app.use((req, res) => {
   res.status(404).json({ error: "Endpoint not found" });
 });
-
-app.use(
-  cors({
-    origin: "https://fuel-data-app.onrender.com",
-  })
-);
-app.options("*", cors());
 
 // Start server
 initializeData().finally(() => {
